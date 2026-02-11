@@ -6,12 +6,22 @@
 }
 
 @theme {
-  /* Custom colors */
+  /* Custom design tokens */
   --color-primary: #3b82f6;
   --color-secondary: #8b5cf6;
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
 
-  /* Custom fonts */
   --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "Fira Code", monospace;
+
+  /* Custom spacing */
+  --spacing-section: 4rem;
+
+  /* Breakpoints (if needed) */
+  --breakpoint-xs: 480px;
+  --breakpoint-3xl: 1920px;
 }
 
 @theme inline {
@@ -40,7 +50,19 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+}
+
+/* Custom components */
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-6;
   }
 }
