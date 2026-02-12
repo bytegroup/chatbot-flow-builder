@@ -3,6 +3,7 @@ import { UsersService } from './users.service';
 import {ApiOperation, ApiQuery, ApiResponse} from "@nestjs/swagger";
 import {UserDto} from "./dto/user.dto";
 import {Roles} from "../auth/decorators/roles.decorator";
+import {Public} from "../auth/decorators/public.decorator";
 
 @Controller('users')
 export class UsersController {
@@ -10,6 +11,7 @@ export class UsersController {
 
   @Get()
   @Roles('admin')
+  @Public()
   @ApiOperation({ summary: 'Get all users (Admin only)' })
   @ApiQuery({ name: 'page', required: false, type: Number })
   @ApiQuery({ name: 'limit', required: false, type: Number })
