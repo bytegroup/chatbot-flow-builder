@@ -272,7 +272,7 @@ export default function FlowsPage() {
                 </div>
 
                 {/* Flow Info */}
-                <Link href={`/frontend/src/app/flows/${flow._id}`}>
+                <Link href={`/flows/${flow._id}`}>
                   <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
                     {flow.name}
                   </h3>

@@ -77,7 +77,7 @@ export default function FlowBuilderPage() {
         
         <div className="flex-1 relative">
           <ReactFlowProvider>
-            <FlowCanvas flowId={flowId} />
+            <FlowCanvas />
           </ReactFlowProvider>
         </div>
 

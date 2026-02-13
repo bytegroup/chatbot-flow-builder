@@ -53,8 +53,7 @@ const initialState = {
   lastSaved: null,
 };
 
-export const useFlowStore = create<FlowState>((set,
-                                               get) => ({
+export const useFlowStore = create<FlowState>((set, get) => ({
   ...initialState,
 
   setFlowId: (id) => set({ flowId: id }),

@@ -13,14 +13,12 @@ export default function RegisterPage() {
   const { setUser } = useAuthStore();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [avatar, setAvatar] = useState('https://ui-avatars.com/api/?name=John+Doe&background=random');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    console.log("submit test");
     e.preventDefault();
 
     // Validation
@@ -33,12 +31,11 @@ export default function RegisterPage() {
       toast.error('Password must be at least 8 characters');
       return;
     }
-    toast.message("eyse");
+
     setIsLoading(true);
 
     try {
-      setAvatar(`https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random`);
-      const data = await api.register({ name, email, password, avatar });
+      const data = await api.register({ name, email, password });
       setUser(data.user);
       toast.success('Account created successfully!');
       router.push('/dashboard');
@@ -163,7 +160,7 @@ export default function RegisterPage() {
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || password !== confirmPassword || password.length < 8}
               className="btn-primary w-full justify-center"
             >
               {isLoading ? (

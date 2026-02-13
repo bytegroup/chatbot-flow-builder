@@ -140,7 +140,7 @@ export default function DashboardPage() {
             {stats.recentFlows.map((flow: any) => (
               <Link
                 key={flow._id}
-                href={`/frontend/src/app/flows/${flow._id}`}
+                href={`/flows/${flow._id}`}
                 className="flex items-center justify-between p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
               >
                 <div className="flex-1">
