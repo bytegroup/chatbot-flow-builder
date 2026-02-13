@@ -99,12 +99,17 @@ class ApiClient {
   }
 
   // Auth endpoints
-  async register(data: { email: string; password: string; name: string }) {
-    const response = await this.client.post('/auth/register', data);
-    const { accessToken, refreshToken } = response.data;
-    this.setToken(accessToken);
-    this.setRefreshToken(refreshToken);
-    return response.data;
+  async register(data: { email: string; password: string; name: string, avatar?: string }) {
+    try {
+      const response = await this.client.post('/auth/register', data);
+      const { accessToken, refreshToken } = response.data;
+      this.setToken(accessToken);
+      this.setRefreshToken(refreshToken);
+      return response.data;
+    } catch (err: any) {
+      //console.error('Registration error:', err.response?.data || err.message);
+      throw err;
+    }
   }
 
   async login(data: { email: string; password: string }) {
